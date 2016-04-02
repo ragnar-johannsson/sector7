@@ -1,0 +1,10 @@
+version: '2'
+services:
+  sector7:
+    image: ragnarb/sector7
+    ports:
+    - 80:80
+  redis:
+    image: redis
+    volumes:
+    - /opt/redis/data:/data
