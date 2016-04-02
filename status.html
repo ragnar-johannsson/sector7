@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+<div id="chart_div"></div>
+<script>
+  google.load('visualization', '1', {packages: ['corechart', 'bar']});
+  google.setOnLoadCallback(drawShit);
+
+  function drawShit() {
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.open("GET", "/list", true);
+    xmlhttp.onreadystatechange = function() {
+      if (xmlhttp.readyState !== 4 || xmlhttp.status !== 200) {
+        return;
+      }
+
+      var chartElem = document.getElementById('chart_div');
+      var raw = JSON.parse(xmlhttp.responseText);
+
+      if (raw.length === 1) {
+        return (chartElem.innerHTML = 'No data');
+      }
+
+      var data = google.visualization.arrayToDataTable(raw);
+      var options = {
+        title: 'Wall of shame',
+        chartArea: {width: '75%'},
+      };
+
+      chartElem.style.height = (100 + raw.length * 50) + 'px';
+
+      var chart = new google.visualization.BarChart(chartElem);
+      chart.draw(data, options);
+
+    };
+    xmlhttp.send();
+  }
+</script>
+
