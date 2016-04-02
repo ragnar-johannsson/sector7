@@ -1,0 +1,19 @@
+{
+  "name": "sector7",
+  "version": "0.1.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "ragnar@igo.is",
+  "license": "BSD2",
+  "dependencies": {
+    "good": "^6.4.0",
+    "good-console": "^5.1.0",
+    "hapi": "^10.0.1",
+    "hapi-api-rate-limit": "^1.0.0",
+    "inert": "^3.0.1",
+    "redis": "^2.0.1"
+  }
+}
